@@ -1,7 +1,6 @@
 import socket
 import sys
 import argparse
-from datetime import datetime
 import threading
 from queue import Queue
 
@@ -11,7 +10,7 @@ def escanear_puerto(target, puerto):
     """Lógica central: Intenta conectar a un puerto específico."""
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.settimeout(1.0)
+        s.settimeout
         resultado = s.connect_ex((target, puerto))
         
         if resultado == 0:
@@ -57,7 +56,7 @@ def trabajador(target, cola_puertos):
 
     # 5. Lanzar los hilos en paralelo (Multithreading)
     # Usamos un máximo de 10 hilos concurrentes para no saturar la red
-    num_hilos = min(50, len(lista_puertos))
+    num_hilos = min(50, len(lista_puertos)) #cambio de cantidad de hilos a 50
     for _ in range(num_hilos):
         t = threading.Thread(target=trabajador, args=(ip_objetivo, cola))
         t.daemon = True  # Permite cerrar el script con Ctrl+C limpiamente
